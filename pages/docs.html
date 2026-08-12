@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<title>Documentation — OpenBubble</title>
+<meta name="description" content="OpenBubble documentation — install, configure, and extend the open source AI coding agent." />
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+<link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark">
+          <picture>
+            <source srcset="../assets/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+            <img src="../assets/logo-light.svg" alt="OpenBubble" width="156" height="28" />
+          </picture>
+        </span>
+      </a>
+      <a class="nav-link" href="../index.html#features">Features</a>
+      <a class="nav-link is-active" href="docs.html">Docs</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-link" href="https://github.com">github</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section style="padding-top: var(--space-7); padding-bottom: var(--space-6);">
+    <h1 style="font-size:28px;font-weight:700;margin:0 0 var(--space-2);">Documentation</h1>
+    <p style="color:var(--ink-2);margin:0;">Install, configure, and extend OpenBubble.</p>
+  </section>
+
+  <section class="docs">
+    <nav class="docs-toc" aria-label="On this page">
+      <a href="#install">Install</a>
+      <a href="#quickstart">Quickstart</a>
+      <a href="#providers">Providers</a>
+      <a href="#config">Configuration</a>
+      <a href="#keybindings">Keybindings</a>
+      <a href="#lsp">LSP</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#enterprise">Enterprise</a>
+    </nav>
+
+    <article class="docs-content">
+
+      <h2 id="install">Install</h2>
+      <p>OpenBubble is distributed as a single static binary. The install script places it in <code>~/.local/bin</code> on Linux/macOS or <code>%LOCALAPPDATA%\Programs\OpenBubble</code> on Windows.</p>
+      <pre><code>curl -fsSL https://openbubble.ai/install | bash</code></pre>
+      <p>Other install methods:</p>
+      <pre><code>npm i -g openbubble-ai@latest
+bun add -g openbubble-ai@latest
+brew install OpenBubble
+paru -S openbubble-bin</code></pre>
+      <p>Verify the installation:</p>
+      <pre><code>OpenBubble --version
+# OpenBubble 0.4.0</code></pre>
+
+      <h2 id="quickstart">Quickstart</h2>
+      <p>From any project directory, run:</p>
+      <pre><code>cd my-project
+OpenBubble</code></pre>
+      <p>On first run, OpenBubble will ask you to pick a model provider. The free tier uses <strong>Models.dev</strong> included models — no account required.</p>
+      <p>Useful slash commands:</p>
+      <ul>
+        <li><code>/help</code> — list all commands</li>
+        <li><code>/model</code> — switch the active model</li>
+        <li><code>/share</code> — copy a share link to the current session</li>
+        <li><code>/clear</code> — reset the conversation</li>
+        <li><code>/exit</code> — quit</li>
+      </ul>
+
+      <h2 id="providers">Providers</h2>
+      <p>OpenBubble works with any LLM provider that exposes an OpenAI-compatible API. 75+ providers are preconfigured through <a href="https://models.dev">Models.dev</a>.</p>
+      <p>To connect a provider, set its API key in your environment or in the config file:</p>
+      <pre><code>export OPENAI_API_KEY=sk-...
+export ANTHROPIC_API_KEY=sk-ant-...
+export GOOGLE_GENERATIVE_AI_API_KEY=...</code></pre>
+      <p>You can also log in interactively with <code>/login openai</code> or <code>/login github</code> to use your existing ChatGPT or Copilot subscription.</p>
+
+      <h2 id="config">Configuration</h2>
+      <p>OpenBubble reads <code>~/.config/OpenBubble/config.json</code>. A minimal config:</p>
+      <pre><code>{
+  "model": "anthropic/claude-sonnet-4",
+  "theme": "system",
+  "share": "manual",
+  "lsp": {
+    "auto": true
+  }
+}</code></pre>
+      <p>Field reference:</p>
+      <ul>
+        <li><code>model</code> — default model in <code>provider/model</code> form.</li>
+        <li><code>theme</code> — <code>light</code>, <code>dark</code>, or <code>system</code> (follow OS).</li>
+        <li><code>share</code> — <code>auto</code>, <code>manual</code>, or <code>off</code>.</li>
+        <li><code>lsp.auto</code> — automatically detect and load LSPs from the project.</li>
+      </ul>
+
+      <h2 id="keybindings">Keybindings</h2>
+      <p>OpenBubble follows standard terminal conventions. A few worth knowing:</p>
+      <ul>
+        <li><span class="kbd">Ctrl</span> + <span class="kbd">C</span> — cancel the current generation</li>
+        <li><span class="kbd">Ctrl</span> + <span class="kbd">L</span> — clear the screen</li>
+        <li><span class="kbd">Ctrl</span> + <span class="kbd">R</span> — reverse search history</li>
+        <li><span class="kbd">↑</span> / <span class="kbd">↓</span> — navigate prompt history</li>
+        <li><span class="kbd">/</span> — open the command palette</li>
+        <li><span class="kbd">Esc</span> <span class="kbd">Esc</span> — archive the current session</li>
+      </ul>
+
+      <h2 id="lsp">LSP</h2>
+      <p>OpenBubble auto-detects Language Server Protocol servers for the languages used in your project. If a server is already on your <code>$PATH</code>, OpenBubble will use it. Otherwise it will install it via your package manager.</p>
+      <p>Disable specific servers in your config:</p>
+      <pre><code>{
+  "lsp": {
+    "disabled": ["php"]
+  }
+}</code></pre>
+
+      <h2 id="privacy">Privacy</h2>
+      <p>OpenBubble does not store your code, prompts, or session data. All communication happens directly between your machine and the model provider you configured.</p>
+      <p>For sensitive environments, run with <code>--privacy</code> to disable all telemetry and any background network calls:</p>
+      <pre><code>OpenBubble --privacy</code></pre>
+
+      <h2 id="enterprise">Enterprise</h2>
+      <p>For self-hosted deployments, OpenBubble supports a fully air-gapped mode with a local model server (Ollama, vLLM, or LM Studio). Point OpenBubble at your local endpoint:</p>
+      <pre><code>{
+  "provider": {
+    "name": "internal",
+    "baseURL": "https://llm.internal.acme.corp/v1",
+    "apiKey": "env:INTERNAL_LLM_KEY"
+  }
+}</code></pre>
+      <p>Contact <a href="mailto:enterprise@openbubble.ai">enterprise@openbubble.ai</a> for SSO, audit logging, and custom SLAs.</p>
+
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 Anomaly</span>
+    <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+      <a href="#">Brand</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="docs.html">Docs</a>
+    </div>
+    <span>English</span>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+</body>
+</html>

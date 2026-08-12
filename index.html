@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<title>OpenBubble — The open source AI coding agent</title>
+<meta name="description" content="OpenBubble is an open source AI coding agent for the terminal, IDE, and desktop. Free models included or connect any provider." />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="banner">
+  <div class="banner-inner">
+    <span class="chip">New</span>
+    <span>Introducing <strong>tabs for desktop</strong>. Available on macOS, Windows, and Linux.</span>
+    <a href="#install">Install now →</a>
+  </div>
+</div>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">
+          <picture>
+            <source srcset="assets/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+            <img src="assets/logo-light.svg" alt="OpenBubble" width="156" height="28" />
+          </picture>
+        </span>
+      </a>
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="pages/docs.html">Docs</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-link" href="https://github.com" aria-label="GitHub">github</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero -->
+  <section class="hero" id="install">
+    <h1>The open source<br/>AI coding agent</h1>
+    <p class="lede">
+      Free models included or connect any model from any provider, including
+      <a href="https://anthropic.com">Claude</a>, <a href="https://openai.com">GPT</a>,
+      <a href="https://gemini.google.com">Gemini</a> and more.
+    </p>
+
+    <div class="install" data-tabs>
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" role="tab">curl</button>
+        <button class="tab" role="tab">npm</button>
+        <button class="tab" role="tab">bun</button>
+        <button class="tab" role="tab">brew</button>
+        <button class="tab" role="tab">paru</button>
+      </div>
+      <div class="tab-panel is-active">
+        <pre><code>curl -fsSL https://openbubble.ai/install | bash</code></pre>
+        <button class="copy-btn" data-copy="curl -fsSL https://openbubble.ai/install | bash">copy</button>
+      </div>
+      <div class="tab-panel">
+        <pre><code>npm i -g openbubble-ai@latest</code></pre>
+        <button class="copy-btn" data-copy="npm i -g openbubble-ai@latest">copy</button>
+      </div>
+      <div class="tab-panel">
+        <pre><code>bun add -g openbubble-ai@latest</code></pre>
+        <button class="copy-btn" data-copy="bun add -g openbubble-ai@latest">copy</button>
+      </div>
+      <div class="tab-panel">
+        <pre><code>brew install openbubble</code></pre>
+        <button class="copy-btn" data-copy="brew install openbubble">copy</button>
+      </div>
+      <div class="tab-panel">
+        <pre><code>paru -S openbubble-bin</code></pre>
+        <button class="copy-btn" data-copy="paru -S openbubble-bin">copy</button>
+      </div>
+    </div>
+
+    <div class="hero-media" aria-label="Product preview">
+      <span>// terminal preview placeholder</span>
+    </div>
+  </section>
+
+  <!-- What is OpenBubble -->
+  <section class="section" id="features">
+    <h2>What is OpenBubble?</h2>
+    <p>
+      OpenBubble is an open source agent that helps you write code in your
+      <strong>terminal</strong>, <strong>IDE</strong>, or <strong>desktop</strong>.
+    </p>
+    <ul class="features">
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">LSP enabled</span> <span class="feature-desc">— automatically loads the right LSPs for the LLM.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">Multi-session</span> <span class="feature-desc">— start multiple agents in parallel on the same project.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">Share links</span> <span class="feature-desc">— share a link to any session for reference or to debug.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">GitHub Copilot</span> <span class="feature-desc">— log in with GitHub to use your Copilot account.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">ChatGPT Plus/Pro</span> <span class="feature-desc">— log in with OpenAI to use your ChatGPT Plus or Pro account.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">Any model</span> <span class="feature-desc">— 75+ LLM providers through Models.dev, including local models.</span></span></li>
+      <li class="feature"><span class="feature-mark">[*]</span><span><span class="feature-title">Any editor</span> <span class="feature-desc">— available as a terminal interface, desktop app, and IDE extension.</span></span></li>
+    </ul>
+    <p style="margin-top: var(--space-5)"><a href="pages/docs.html">Read the docs →</a></p>
+  </section>
+
+  <!-- Privacy -->
+  <section class="section">
+    <h2>Built for privacy first</h2>
+    <p>
+      OpenBubble does not store any of your code or context data, so that it
+      can operate in privacy sensitive environments. Learn more about
+      <a href="pages/docs.html#privacy">privacy</a>.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <details>
+        <summary>What is OpenBubble?</summary>
+        <div class="answer">
+          OpenBubble is an open-source AI coding environment designed to make
+          AI-assisted software development more structured and transparent.
+          Instead of relying on a single undifferentiated AI response, OpenBubble
+          can organize a task into different roles, such as planning, research,
+          development, and review, allowing each stage to contribute to the final
+          result.
+          <br/><br/>
+          In simple terms, <strong>OpenBubble gives one AI model a structured
+          development workflow, so you can see how a coding task moves from
+          understanding and planning to implementation and review.</strong>
+          <br/><br/>
+          That wording fits the project's actual direction without making the
+          claim that OpenBubble is literally running multiple independent AI
+          models. The architectural review also emphasizes that the role system
+          is primarily about <strong>structural transparency and workflow
+          organization</strong>.
+        </div>
+      </details>
+      <details>
+        <summary>How do I use OpenBubble?</summary>
+        <div class="answer">Install via the command at the top of this page, then run <code>openbubble</code> in any project directory. The <a href="pages/docs.html">docs</a> cover the rest.</div>
+      </details>
+      <details>
+        <summary>Can I use my existing AI subscriptions with OpenBubble?</summary>
+        <div class="answer">Yes. OpenBubble supports GitHub Copilot, ChatGPT Plus/Pro, and 75+ providers through Models.dev.</div>
+      </details>
+      <details>
+        <summary>Can I only use OpenBubble in the terminal?</summary>
+        <div class="answer">
+          Yes — you can use OpenBubble straight from your terminal today. Just
+          install it with the command at the top of the page and run
+          <code>openbubble</code> in any project directory.
+          <br/><br/>
+          A dedicated <strong>desktop app</strong> is also in active development
+          and will be released soon. It will bundle the same terminal-native
+          experience with a more visual, point-and-click workflow — tabs, file
+          previews, and a side-by-side session view — so you can pick whichever
+          surface fits the task.
+        </div>
+      </details>
+      <details>
+        <summary>How much does OpenBubble cost?</summary>
+        <div class="answer">
+          OpenBubble itself is free to use. You connect it to your
+          <strong>own AI provider and API key</strong>, so you only pay the
+          provider you choose for the AI usage.
+          <br/><br/>
+          Your total cost therefore depends on the provider, model, and amount
+          of usage. You can use a provider that offers free usage, a paid API,
+          or your own local model, depending on what you prefer.
+        </div>
+      </details>
+      <details>
+        <summary>What about data and privacy?</summary>
+        <div class="answer">OpenBubble does not store your code or context. Your data stays between you and your chosen model provider.</div>
+      </details>
+      <details>
+        <summary>Is OpenBubble open source?</summary>
+        <div class="answer">Yes. OpenBubble is MIT licensed and developed in the open on GitHub.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Community CTA -->
+  <section class="section">
+    <div class="cta">
+      <div>
+        <h3>Join the community</h3>
+        <p>Have questions, ideas, or just want to hang out with other OpenBubble users? Come say hi on Discord.</p>
+      </div>
+      <a class="btn" href="https://discord.gg/MBbDSNsWZ" target="_blank" rel="noopener">Join Discord →</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 Anomaly</span>
+    <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+      <a href="#">Brand</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="pages/docs.html">Docs</a>
+      <a href="https://discord.gg/MBbDSNsWZ" target="_blank" rel="noopener">Discord</a>
+    </div>
+    <span>English</span>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
