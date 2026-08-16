@@ -114,38 +114,6 @@ img, svg, video { max-width: 100%; display: block; }
 .nav-link:hover { color: var(--ink); }
 .nav-link.is-active { color: var(--ink); }
 
-/* ---------- Announcement bar ---------- */
-.banner {
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-soft);
-  font-size: 13px;
-  color: var(--ink-2);
-}
-.banner-inner {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 10px var(--space-5);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-.chip {
-  display: inline-block;
-  background: var(--ink);
-  color: var(--bg);
-  border-radius: var(--radius-sm);
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-[data-theme="dark"] .chip {
-  background: var(--ink);
-  color: var(--bg);
-}
-.banner a { text-decoration: underline; text-underline-offset: 3px; }
-
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
