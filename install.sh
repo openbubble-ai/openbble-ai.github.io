@@ -279,7 +279,8 @@ else
         specific_version=$requested_version
     fi
     url="$download_base/$specific_version/$filename"
-    checksums_url="$download_base/$specific_version/SHA256SUMS-$specific_version.txt"
+    # Use raw.githubusercontent.com for checksums (reliable, correct Content-Type)
+    checksums_url="https://raw.githubusercontent.com/openbubble-ai/openbubble-ai.github.io/main/download/$specific_version/SHA256SUMS-$specific_version.txt"
 
     print_step "Version to install: $specific_version"
     print_step "Binary: $filename"
